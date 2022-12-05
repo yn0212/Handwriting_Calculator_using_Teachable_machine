@@ -268,7 +268,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
         cout << num << endl; // 후위표기법 출력
         return num;// 후위표기법 출력
     }
- 
+ -----------------------------------------------------------
 - 후위표기법을 계산하는 함수
 - ![image](https://user-images.githubusercontent.com/105347300/205653770-695d5fd3-6d6e-471e-99bf-9a12bb0b0734.png)
 -     double calc2(string str) { // 후위표기법 계산
@@ -307,8 +307,8 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
         cout << "답:" << v[0] << endl;////계산 결괏값 출력
         return value;
     }
- 
- - 문자 연산자에따른 두개의 값을 연산하는 함수
+ ---------------------------------------------------------
+- 문자 연산자에따른 두개의 값을 연산하는 함수
 - ![image](https://user-images.githubusercontent.com/105347300/205653707-e1d2d47b-1852-40a6-829e-a562af4124ec.png)
  -     void calc_op(double* val1, double* val2, int op_index, string str) { //두개의 값 연산하는 함수
         if ((int)str[op_index] == 120) { //곱셈
@@ -324,5 +324,29 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
             *val1 += *val2;
         }
     }
- ----------------
+ -----------------------------------------------
+## ANS기능
+- 클릭시 계산한 수식의 값을 저장하고 필기체 입력칸에 ANS가 인식되었을시 저장되었던 결괏값을 ANS에 대입.
 
+- ![image](https://user-images.githubusercontent.com/105347300/205661595-188fb756-7a27-4e00-aed7-9dab28362619.png)
+-             else if (x >= 1300 && (y < 300 && y>200)) { // ans구간 설정
+                if (level == 1) { // =버튼 입력 뒤에 사용가능
+                    ans = value; //값 대입
+                    cout << "ans:" << ans << endl; //출력
+                    draw_q(img, dst, ans, 0); //값 출력
+                    draw(img);
+                    imshow("img", img);
+
+                }
+            }
+ 
+ --------------------
+ ## AC기능
+ -입력기능 창에 Scalar(0)을 대입해 사용자의 전체 입력 삭제
+- ![image](https://user-images.githubusercontent.com/105347300/205662175-f639c0ed-79e3-4d7d-9ae4-7c30435870ef.png)
+-             else if (x >= 1300 && y <= 100) { // ac버튼 구간 설정
+                img = Scalar(0); // 필기체 입력칸 지우기
+                draw(img); // 필기체 구성 그리기 함수 호출
+
+                level = 2;
+            }
