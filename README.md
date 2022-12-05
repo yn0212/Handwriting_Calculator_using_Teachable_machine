@@ -27,6 +27,10 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 ![image](https://user-images.githubusercontent.com/105347300/205648749-8a029d2f-93d6-4fdd-b4c7-5b9a26d010ba.png)
 ----------------------------------------------------------
 
+# :pushpin:implementation result
+![image](https://user-images.githubusercontent.com/105347300/205663580-ab23a7a3-a81f-4033-9ca8-7f8b334a4da5.png)
+
+
 # :pushpin:Project algorithm
 ## :bulb:문자학습 
 - Teachable Machine -google 사용
@@ -385,3 +389,4 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
         Mat last = img(Rect(x, y, w, h)); //마지막에 그려진 객체 영역 설정
         last = Scalar(0); // 객체 영역 초기화
     }
+ ----------------------------------------
