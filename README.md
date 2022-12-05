@@ -142,29 +142,21 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
     }
 -----------------------------
 ## 계산 기능
-- 문자 연산자에따른 두개의 값을 연산하는 함수
-- ![image](https://user-images.githubusercontent.com/105347300/205653707-e1d2d47b-1852-40a6-829e-a562af4124ec.png)
-- 문자열을 후위 표기법으로 만들기 기능 함수
-- ![image](https://user-images.githubusercontent.com/105347300/205653749-f4c4f497-2e65-4b65-a800-671565eb94bc.png)
-- 후위표기법을 계산하는 함수
-- ![image](https://user-images.githubusercontent.com/105347300/205653770-695d5fd3-6d6e-471e-99bf-9a12bb0b0734.png)
- ----------------
 :paperclip:계산기 구현 방법 
 -----------------
 
 ### 식을 후위표기법으로 바꾸기 --- > string calc1();
 
 
-  >1. 숫자가 나오면 그대로 문자열에 입력한다.
+  >1. 숫자가 나오면 그대로 문자열에 입력하고 ' '로 구분한다.
 
-  >2. '(' 나오면 벡터에 push한다.
+  >2. '(' 나오면 연산자 벡터에 push한다.
 
-  >3. '*' '/' 나오면 벡터에 push한다.
+  >3. '*' '/' 나오면 연산자 벡터에 push한다.
 
-  >4. '+' '-' 연산이 나오면 여는 괄호 이후부터 끝까지 문자열에 입력 , 여는 괄호가 없다면 벡터의 끝까지 출력하고 그 연산자를 문자열에 입력한다.
+  >4. '+' '-' 연산이 나오면 연산자 벡터에있는 여는 괄호 이후부터 끝까지 문자열 변수에 입력하고 , 여는 괄호가 없다면 연산자 벡터의 끝까지 문자열 변수에 넣고 이 연산자를 연산자 벡터에 push한다.
 
-  >5. 닫는 괄호(')')가 나오면 여는 괄호('(')가 나올때까지 문자열에 입력한다.
-
+  >5. 닫는 괄호(')')가 나오면 여는 괄호('(')가 나올때까지 문자열 변수에 입력한다. 괄호는 넣지 않는다.
 
 
 ### 후위표기법 계산하기 --> double calc2(string str);
@@ -174,7 +166,163 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 
   >2. 숫자이면 벡터에 push
 
-  >3. 연산자이면 벡터의 마지막 요소와 마지막 전 요소끼리 연산후 두개의 요소를 pop하고 결과값을 벡터에 push
+  >3. 연산자이면 벡터의 마지막 요소와 마지막 전 요소를 연산후 두개의 요소를 pop하고 결과값을 다시 벡터에 push
 
+----------------------------------------------
 
+- 문자열을 후위 표기법으로 만들기 기능 함수
+ - ![image](https://user-images.githubusercontent.com/105347300/205653749-f4c4f497-2e65-4b65-a800-671565eb94bc.png)
+ 
+     string calc1() {  //문자열을 후위 표기법으로 만들기 기능 함수
+        vector<char> op;// 연산자를 저장할 벡터
+        string num = ""; // 숫자를 저장할 문자열 변수
+        //문자를 숫자로
+        int start = 0; 
+        int ox = 0;
+        int i, num_cnt = 0;
+        for (i = 0; i < message.size(); i++) // 후위 표기법 만들기
+        {
+            if (((int)message[i] <= 57 && (int)message[i] > 47) && i == message.size() - 1) { // 문자열의 맨마지막이고  문자가 숫자이면
+                num_cnt++;
+                string s = message.substr(start, num_cnt);// 숫자
+                num += s; //연산자 앞 숫자 자른 문자열 숫자로 바꿔서 넣기
+                num += " ";
+            }
+            else if (((int)message[i] <= 57 && (int)message[i] > 47) || message[i] == '.') { //문자가 숫자 이거나 소수점이면
+
+                num_cnt++; // 숫자 자리수,카운트하기
+            }
+            else { // 연산자이면
+                if ((int)message[i - 1] <= 57 && (int)message[i - 1] > 47) { //연산자 앞이 숫자이면
+                    string s = message.substr(start, num_cnt);//연산자 앞 숫자 만 자르기
+                    num += s; //연산자 앞 숫자를 자른 문자열 숫자로 바꿔서 변수에 저장
+                    num += " "; // 한 숫자 구분 띄어쓰기.
+                    num_cnt = 0; //숫자 자리수 0개로 대입.
+                }
+                start = i + 1; //연산자 뒷 숫자의 인덱스
+                if (op.empty()) {//연산자가 없으면, 첫 연산자가 등장시
+                    op.push_back((char)message[i]); //연산자 넣기
+                }
+                else if (message[i] == '(' || message[i] == 'x' || message[i] == '/') { //이 연산자이면 벡터에 push
+                    op.push_back((char)message[i]);
+                }
+                else if (message[i] == '+' || message[i] == '-') { //여는 괄호있으면  (위의 모든 연산자 출력, (없으면 벡터의 끝까지 출력 후 스택에push
+                    for (int j = 0; j < op.size(); j++) //'+' '-' 연산이 나오면 여는 괄호 이후부터 끝까지 문자열에 입력
+                    {
+                        if (op[j] == '(') { //괄호 안  연산자 출력
+                            if (op.size() - 1 == j) { // 괄호 위에 아무것도 없으면
+                            }
+                            else {
+                                //여는 괄호 이후부터 끝까지 문자열에 입력
+                                for (int k = op.size() - 1; k >= j + 1; k--)
+                                {
+                                    num += op[k];
+                                    num += " "; // 구분
+
+                                    op.pop_back(); // 연산자 벡터에서 마지막 연산자 삭제
+                                }
+                            }
+                            ox++;
+                        }
+                    }
+                    if (ox == 0) // 괄호 없으면 스택의 끝까지 출력
+                    {
+                        for (int k = op.size() - 1; k >= 0; k--)
+                        {
+                            num += op[k]; // 출력
+                            num += " "; // 구분
+                            op.pop_back();// 연산자 벡터에서 마지막 연산자 삭제
+
+                        }
+                    }
+                    op.push_back((char)message[i]); // push
+                    ox = 0;
+                }
+                else if (message[i] == ')') { // 닫는 괄호 나오면 여는 괄호까지 모든 op비우기
+
+                    for (int j = 0; j < op.size(); j++)
+                    {
+                        if (op[j] == '(') {//여는 괄호까지 모든 op비우기
+                            for (int k = op.size() - 1; k >= j + 1; k--)
+                            {
+                                num += op[k];//출력
+                                num += " "; // 구분
+                                op.pop_back();// 연산자 벡터에서 마지막 연산자 삭제
+
+                            }
+
+                            op.pop_back();// 연산자 벡터에서 마지막 연산자 삭제
+                        }
+                    }
+                }
+            }
+        }
+        if (i == message.size()) { // message의 식이 끝나면 벡터에 남아있는 연산자 모두 num에 출력
+            for (int j = op.size() - 1; j >= 0; j--)
+            {
+
+                num += op[j]; //남아있는 연산자 넣기
+                num += " "; // 구분
+            }
+        }
+        cout << num << endl; // 후위표기법 출력
+        return num;// 후위표기법 출력
+    }
+ 
+- 후위표기법을 계산하는 함수
+- ![image](https://user-images.githubusercontent.com/105347300/205653770-695d5fd3-6d6e-471e-99bf-9a12bb0b0734.png)
+-     double calc2(string str) { // 후위표기법 계산
+        vector<double> v;
+        int cur_position = 0; // 시작위치
+        int position; // 공백 인덱스
+        int cnt = 0;
+        double val1, val2, value = 0;
+        bool ox = false;
+        while ((position = str.find(" ", cur_position)) != std::string::npos) {//문자열 앞에서부터 ' ' 공백을 기준으로 끊기
+            int len = position - cur_position;//공백을 기준으로 끊은 문자의 개수
+            string result = str.substr(cur_position, len);//문자열 시작위치에서 len개수만큼 잘라낸 문자열
+            for (int i = 0; i < result.size(); i++) {
+                if (((int)result[i] <= 57 && (int)result[i] > 47) || result[i] == '.') { // 숫자이거나 소수점이면
+                    ox = true; // 숫자이면 벡터에 push
+                    cnt++; //숫자이면 
+                }
+            }
+            if (ox) { // 숫자이면
+                v.push_back(stod(result));//숫자이면 벡터에 push
+                ox = false;
+            }
+            if (cnt == 0) { //연산자이면 벡터의 마지막 요소와 마지막 전 요소끼리 연산후 두개의 요소를 pop하고 결과값을 벡터에 push
+
+                val2 = v.back();// 벡터의 마지막 요소
+                val1 = v[v.size() - 2];//마지막 전 요소
+                //cout << "val1:" << val1 << "val2:" << val2 << endl;
+                calc_op(&val1, &val2, cur_position, str);//벡터의 마지막 요소와 마지막 전 요소끼리 연산
+                v.pop_back();//두개의 요소를 pop
+                v[v.size() - 1] = val1; // 결과값을 벡터에 push
+            }
+            cur_position = position + 1; //시작위치 갱신
+            cnt = 0;
+        }
+        value = v[0]; //계산 결괏값
+        cout << "답:" << v[0] << endl;////계산 결괏값 출력
+        return value;
+    }
+ 
+ - 문자 연산자에따른 두개의 값을 연산하는 함수
+- ![image](https://user-images.githubusercontent.com/105347300/205653707-e1d2d47b-1852-40a6-829e-a562af4124ec.png)
+ -     void calc_op(double* val1, double* val2, int op_index, string str) { //두개의 값 연산하는 함수
+        if ((int)str[op_index] == 120) { //곱셈
+            *val1 = (*val1) * (*val2);
+        }
+        else if ((int)str[op_index] == 45) { //-
+            *val1 -= (*val2);
+        }
+        else if ((int)str[op_index] == 47) {// /
+            *val1 /= (*val2);
+        }
+        else if ((int)str[op_index] == 43) { //덧셈
+            *val1 += *val2;
+        }
+    }
+ ----------------
 
