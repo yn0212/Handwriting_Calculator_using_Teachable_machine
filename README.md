@@ -35,6 +35,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 - google colab 에서 상기의 convert.ipynb파일 실행 후 openCV용 모델 파일로 변환 
 ----------------------------
 ## 필기체 입력 기능 
+- 사용자의 마우스 입력의 마지막 좌표를 저장해 현재 좌표와 라인을 이어서 실시간으로 그리는 함수
 - ![image](https://user-images.githubusercontent.com/105347300/205650161-ad97a274-67c8-42c1-aea4-bce1ae2670c5.png)
 -         else if (event == EVENT_MOUSEMOVE) { //필기체 입력 그리기
             if (flags & EVENT_FLAG_LBUTTON) {
@@ -48,6 +49,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
         }
 ---------------------------
 ## =(등호)버튼 (객체 레이블링 기능)
+- 사용자의 필기체 문자열입력 구간을 레이블링해 객체를 찾아내고, 객체의 좌표를 벡터에 저장하는 함수
 - ![image](https://user-images.githubusercontent.com/105347300/205651154-f45aefa9-1030-4f10-b05e-34bd2a964165.png)
 -     void Object_Recognition(Mat img, vector<Rect>& r) {   //필기체 입력구간 객체 인식, 레이블링 하는 함수
         Mat labels, stats, centroids; //객체 레이블링에 필요한 변수 생성
@@ -73,7 +75,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
         }
 
     }
- --------------------------
+--------------------------
  ## 문자 인식 기능
  - opencv용 모델파일을 불러와 블롭객체에 넣고, 이 블롭 객체를 그대로 네트워크 입력으로 설정하고, 순방향으로 실행해 예측 결과 행렬을 얻어 문자 추론  
  - ![image](https://user-images.githubusercontent.com/105347300/205651819-8fdf0d52-da90-49e6-a7d7-fdd95da8e5d0.png)
@@ -138,6 +140,11 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
         }
 
     }
- -----------------------------
- ## 
- 
+-----------------------------
+## 계산 기능
+- 문자 연산자에따른 두개의 값을 연산하는 함수
+- ![image](https://user-images.githubusercontent.com/105347300/205653707-e1d2d47b-1852-40a6-829e-a562af4124ec.png)
+- 문자열을 후위 표기법으로 만들기 기능 함수
+- ![image](https://user-images.githubusercontent.com/105347300/205653749-f4c4f497-2e65-4b65-a800-671565eb94bc.png)
+- 후위표기법을 계산하는 함수
+- ![image](https://user-images.githubusercontent.com/105347300/205653770-695d5fd3-6d6e-471e-99bf-9a12bb0b0734.png)
