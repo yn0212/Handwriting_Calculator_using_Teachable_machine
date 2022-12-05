@@ -344,9 +344,44 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
  ## AC기능
  -입력기능 창에 Scalar(0)을 대입해 사용자의 전체 입력 삭제
 - ![image](https://user-images.githubusercontent.com/105347300/205662175-f639c0ed-79e3-4d7d-9ae4-7c30435870ef.png)
--             else if (x >= 1300 && y <= 100) { // ac버튼 구간 설정
-                img = Scalar(0); // 필기체 입력칸 지우기
-                draw(img); // 필기체 구성 그리기 함수 호출
+- else if (x >= 1300 && y <= 100) { // ac버튼 구간 설정
+       img = Scalar(0); // 필기체 입력칸 지우기
+       draw(img); // 필기체 구성 그리기 함수 호출
 
-                level = 2;
+       level = 2;
+   }
+
+                                            
+--------------------------
+## CE기능
+- 필기체 입력 구간을 레이블링해서 사용자의 마지막 입력을 알아내 삭제하는 기능 
+- ![image](https://user-images.githubusercontent.com/105347300/205662391-5222cb15-5d69-44ee-834c-adb450d03fa5.png)
+-     void ce_button(Mat img) { //ce버튼 구현 함수
+        Mat labels, stats, centroids;
+        int cnt = connectedComponentsWithStats(img, labels, stats, centroids);//객체 레이블링
+        //cout << stats.rows<<"개의 레이블 배경포함 객체수"<<endl;
+        vector<Rect> r;
+        for (int i = 0; i < cnt; i++)      //바운딩 박스 정보 vector<Rect>r에 저장
+        {
+            int* p = stats.ptr<int>(i); //행 역역 추출
+            r.push_back(Rect(p[0], p[1], p[2], p[3]));  //바운딩 박스 정보 vector<Rect>r에 저장
+        }
+        Rect tmp;
+        for (int i = 1; i < r.size(); i++)      // 벡터 r의 저장된 순서를 x좌표가 작은순부터 저장되도록 정렬
+        {
+            for (int j = 0; j < r.size() - i; j++)
+            {
+                if (r[j].x > r[j + 1].x) {// x좌표가 작은순부터 저장되도록 정렬
+                    tmp = r[j];
+                    r[j] = r[j + 1];
+                    r[j + 1] = tmp;
+                }
             }
+        }
+        int x = r[r.size() - 1].x; //마지막에 그려진 객체 영역 설정
+        int y = r[r.size() - 1].y; //마지막에 그려진 객체 영역 설정
+        int w = r[r.size() - 1].width; //마지막에 그려진 객체 영역 설정
+        int h = r[r.size() - 1].height; //마지막에 그려진 객체 영역 설정
+        Mat last = img(Rect(x, y, w, h)); //마지막에 그려진 객체 영역 설정
+        last = Scalar(0); // 객체 영역 초기화
+    }
