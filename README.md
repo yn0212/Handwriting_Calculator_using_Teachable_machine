@@ -3,18 +3,18 @@
 
 ![header](https://capsule-render.vercel.app/api?type=waving&color=ADD8E6&height=300&section=header&text=Handwriting%20calculator&desc=using%20machine%20learning&fontSize=50&demo=wave&fontColor=696969)
 
-## :pushpin:Project Description
+# :pushpin:Project Description
 
 Teachable machine을 이용해 사용자가 필기체로 입력한 수식을 인식하여 계산해주는 계산기 프로그램이다.
 --------------------------------------------------------
-## :pushpin:Project video
+# :pushpin:Project video
 
 https://user-images.githubusercontent.com/105347300/205647125-74062a5f-0be9-419a-8472-40762602ea31.mp4
 
 youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 
 ---------------------------------------------------------
-## :pushpin:Project function
+# :pushpin:Project function
 
 - GUI : 사용자와 상호작용하는 계산기 화면 기능  
 - 문자인식 : 18개의 문자를 인식하는 기능  
@@ -22,19 +22,19 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 - 계산기 기능 : 계산(=) , ANS , CE , AC기능  
 ![image](https://user-images.githubusercontent.com/105347300/205648138-54bd5977-ac56-44d4-9db3-47a5f13a4ada.png)
 
-## :pushpin:Project Block diagram
+# :pushpin:Project Block diagram
 
 ![image](https://user-images.githubusercontent.com/105347300/205648749-8a029d2f-93d6-4fdd-b4c7-5b9a26d010ba.png)
 ----------------------------------------------------------
 
-## :pushpin:Project algorithm
-### 문자학습 
+# :pushpin:Project algorithm
+## 문자학습 
 - Teachable Machine -google 사용
 ---------------------------
-### 모델 파일 변환
+## 모델 파일 변환
 - google colab 에서 상기의 convert.ipynb파일 실행 후 openCV용 모델 파일로 변환 
 ----------------------------
-### 필기체 입력 기능 
+## 필기체 입력 기능 
 - ![image](https://user-images.githubusercontent.com/105347300/205650161-ad97a274-67c8-42c1-aea4-bce1ae2670c5.png)
 -         else if (event == EVENT_MOUSEMOVE) { //필기체 입력 그리기
             if (flags & EVENT_FLAG_LBUTTON) {
@@ -47,7 +47,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
             }
         }
 ---------------------------
-### =(등호)버튼 (객체 레이블링 기능)
+## =(등호)버튼 (객체 레이블링 기능)
 - ![image](https://user-images.githubusercontent.com/105347300/205651154-f45aefa9-1030-4f10-b05e-34bd2a964165.png)
 -     void Object_Recognition(Mat img, vector<Rect>& r) {   //필기체 입력구간 객체 인식, 레이블링 하는 함수
         Mat labels, stats, centroids; //객체 레이블링에 필요한 변수 생성
@@ -74,7 +74,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 
     }
  --------------------------
- ### 문자 인식 기능
+ ## 문자 인식 기능
  - opencv용 모델파일을 불러와 블롭객체에 넣고, 이 블롭 객체를 그대로 네트워크 입력으로 설정하고, 순방향으로 실행해 예측 결과 행렬을 얻어 문자 추론  
  - ![image](https://user-images.githubusercontent.com/105347300/205651819-8fdf0d52-da90-49e6-a7d7-fdd95da8e5d0.png)
 
@@ -139,5 +139,5 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 
     }
  -----------------------------
- ### 
+ ## 
  
