@@ -6,6 +6,9 @@
 ## :pushpin:Project Description
 Teachable machine을 이용해 사용자가 필기체로 입력한 수식을 인식하여 계산해주는 계산기 프로그램이다.
 --------------------------------------------------------
-##:pushpin:Project video
+## :pushpin:Project video
 
-[smartvision_last_project_2001224.zip](https://github.com/yn0212/Handwriting_Calculator_using-machine-learning/files/10154401/smartvision_last_project_2001224.zip)
+
+
+https://user-images.githubusercontent.com/105347300/205647125-74062a5f-0be9-419a-8472-40762602ea31.mp4
+
