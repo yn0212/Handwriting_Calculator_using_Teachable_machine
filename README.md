@@ -49,7 +49,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 ---------------------------
 ### =(등호)버튼 (객체 레이블링 기능)
 - ![image](https://user-images.githubusercontent.com/105347300/205651154-f45aefa9-1030-4f10-b05e-34bd2a964165.png)
-- void Object_Recognition(Mat img, vector<Rect>& r) {   //필기체 입력구간 객체 인식, 레이블링 하는 함수
+-     void Object_Recognition(Mat img, vector<Rect>& r) {   //필기체 입력구간 객체 인식, 레이블링 하는 함수
         Mat labels, stats, centroids; //객체 레이블링에 필요한 변수 생성
         int cnt = connectedComponentsWithStats(img, labels, stats, centroids);// 객체 레이블링
 
@@ -73,4 +73,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
         }
 
     }
- 
+ --------------------------
+ ### 문자 인식 기능
+ - ![image](https://user-images.githubusercontent.com/105347300/205651819-8fdf0d52-da90-49e6-a7d7-fdd95da8e5d0.png)
+
