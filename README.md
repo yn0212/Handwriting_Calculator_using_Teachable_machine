@@ -46,4 +46,31 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
                 }
             }
         }
+---------------------------
+### =(등호)버튼 (객체 레이블링 기능)
+- ![image](https://user-images.githubusercontent.com/105347300/205651154-f45aefa9-1030-4f10-b05e-34bd2a964165.png)
+-  void Object_Recognition(Mat img, vector<Rect>& r) {   //필기체 입력구간 객체 인식, 레이블링 하는 함수
+        Mat labels, stats, centroids; //객체 레이블링에 필요한 변수 생성
+        int cnt = connectedComponentsWithStats(img, labels, stats, centroids);// 객체 레이블링
 
+        for (int i = 0; i < cnt; i++)      //바운딩 박스 정보 vector<Rect>r에 저장
+        {
+            int* p = stats.ptr<int>(i); //i행 단위 정보 추출
+            r.push_back(Rect(p[0]-30, p[1]-30, p[2]+60, p[3]+60)); // 바운딩 박스 정보에 여백을 포함한 크기를 벡터에 저장
+        }
+
+        Rect tmp; // 레이블링된 객체를 벡터r에 저장된 순서를 바꾸기위한 빈 객체 생성
+        for (int i = 1; i < r.size(); i++)      // 벡터 r의 저장된 순서를 x좌표가 작은순부터 저장되도록 정렬
+        {
+            for (int j = 0; j < r.size() - i; j++) 
+            {       // x좌표가 더 작은 객체가 작은 인덱스를 가지도록 설정
+                if (r[j].x > r[j + 1].x) {// 객체의 x좌표 비교
+                    tmp = r[j]; //x좌표가 큰 객체를대입
+                    r[j] = r[j + 1]; //x좌표가 더 작은 객체 대입해 위치 변경
+                    r[j + 1] = tmp; //대입
+                }
+            }
+        }
+
+    }
+ 
