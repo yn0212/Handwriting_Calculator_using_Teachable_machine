@@ -28,13 +28,13 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 ----------------------------------------------------------
 
 # :pushpin:Project algorithm
-## 문자학습 
+## :bulb:문자학습 
 - Teachable Machine -google 사용
 ---------------------------
-## 모델 파일 변환
+## :bulb:모델 파일 변환
 - google colab 에서 상기의 convert.ipynb파일 실행 후 openCV용 모델 파일로 변환 
 ----------------------------
-## 필기체 입력 기능 
+## :bulb:필기체 입력 기능 
 - 사용자의 마우스 입력의 마지막 좌표를 저장해 현재 좌표와 라인을 이어서 실시간으로 그리는 함수
 - ![image](https://user-images.githubusercontent.com/105347300/205650161-ad97a274-67c8-42c1-aea4-bce1ae2670c5.png)
 -         else if (event == EVENT_MOUSEMOVE) { //필기체 입력 그리기
@@ -48,7 +48,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
             }
         }
 ---------------------------
-## =(등호)버튼 (객체 레이블링 기능)
+## :bulb:=(등호)버튼 (객체 레이블링 기능)
 - 사용자의 필기체 문자열입력 구간을 레이블링해 객체를 찾아내고, 객체의 좌표를 벡터에 저장하는 함수
 - ![image](https://user-images.githubusercontent.com/105347300/205651154-f45aefa9-1030-4f10-b05e-34bd2a964165.png)
 -     void Object_Recognition(Mat img, vector<Rect>& r) {   //필기체 입력구간 객체 인식, 레이블링 하는 함수
@@ -76,7 +76,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 
     }
 --------------------------
- ## 문자 인식 기능
+ ## :bulb:문자 인식 기능
  - opencv용 모델파일을 불러와 블롭객체에 넣고, 이 블롭 객체를 그대로 네트워크 입력으로 설정하고, 순방향으로 실행해 예측 결과 행렬을 얻어 문자 추론  
  - ![image](https://user-images.githubusercontent.com/105347300/205651819-8fdf0d52-da90-49e6-a7d7-fdd95da8e5d0.png)
 
@@ -141,7 +141,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 
     }
 -----------------------------
-## 계산 기능
+## :bulb:계산 기능
 :paperclip:계산기 구현 방법 
 -----------------
 
@@ -325,7 +325,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
         }
     }
  -----------------------------------------------
-## ANS기능
+## :bulb:ANS기능
 - 클릭시 계산한 수식의 값을 저장하고 필기체 입력칸에 ANS가 인식되었을시 저장되었던 결괏값을 ANS에 대입.
 
 - ![image](https://user-images.githubusercontent.com/105347300/205661595-188fb756-7a27-4e00-aed7-9dab28362619.png)
@@ -341,7 +341,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
             }
  
  --------------------
- ## AC기능
+ ## :bulb:AC기능
  -입력기능 창에 Scalar(0)을 대입해 사용자의 전체 입력 삭제
 - ![image](https://user-images.githubusercontent.com/105347300/205662175-f639c0ed-79e3-4d7d-9ae4-7c30435870ef.png)
 - else if (x >= 1300 && y <= 100) { // ac버튼 구간 설정
@@ -353,7 +353,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 
                                             
 --------------------------
-## CE기능
+## :bulb:CE기능
 - 필기체 입력 구간을 레이블링해서 사용자의 마지막 입력을 알아내 삭제하는 기능 
 - ![image](https://user-images.githubusercontent.com/105347300/205662391-5222cb15-5d69-44ee-834c-adb450d03fa5.png)
 -     void ce_button(Mat img) { //ce버튼 구현 함수
