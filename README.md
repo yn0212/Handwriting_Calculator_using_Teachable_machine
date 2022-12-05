@@ -21,3 +21,7 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
  0,1,2,3,4,5,6,7,8,9,(,A,N,S,+,-,x,/  
 - 계산기 기능 : 계산(=) , ANS , CE , AC기능  
 ![image](https://user-images.githubusercontent.com/105347300/205648138-54bd5977-ac56-44d4-9db3-47a5f13a4ada.png)
+
+## :pushpin:Project Block diagram
+
+![image](https://user-images.githubusercontent.com/105347300/205648749-8a029d2f-93d6-4fdd-b4c7-5b9a26d010ba.png)
