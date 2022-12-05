@@ -25,3 +25,14 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 ## :pushpin:Project Block diagram
 
 ![image](https://user-images.githubusercontent.com/105347300/205648749-8a029d2f-93d6-4fdd-b4c7-5b9a26d010ba.png)
+----------------------------------------------------------
+
+## :pushpin:Project algorithm
+
+### 문자학습
+- Teachable Machine -google 사용
+
+### 모델 파일 변환
+- google colab 에서 상기의 convert.ipynb파일 실행 후 openCV용 모델 파일로 변환
+
+###
