@@ -39,5 +39,15 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
 
 ### 필기체 입력 기능
 --------------------------------------
-- void onMouse(int event, int x, int y, int flags, void* userdata); ![image](https://user-images.githubusercontent.com/105347300/205650161-ad97a274-67c8-42c1-aea4-bce1ae2670c5.png)
+- ![image](https://user-images.githubusercontent.com/105347300/205650161-ad97a274-67c8-42c1-aea4-bce1ae2670c5.png)
+-         else if (event == EVENT_MOUSEMOVE) { //필기체 입력 그리기
+            if (flags & EVENT_FLAG_LBUTTON) {
+                if (x < 1300 && y >= 100) { //구간 설정
+                    line(img, ptOld, Point(x, y), Scalar(255), 10); //그리기
+                    imshow("img", img); //영상 출력
+                    ptOld = Point(x, y); //마지막 좌표 저장
+
+                }
+            }
+        }
 
