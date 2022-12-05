@@ -75,5 +75,69 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
     }
  --------------------------
  ### 문자 인식 기능
+ - opencv용 모델파일을 불러와 블롭객체에 넣고, 이 블롭 객체를 그대로 네트워크 입력으로 설정하고, 순방향으로 실행해 예측 결과 행렬을 얻어 문자 추론  
  - ![image](https://user-images.githubusercontent.com/105347300/205651819-8fdf0d52-da90-49e6-a7d7-fdd95da8e5d0.png)
 
+-     void tm_machine(Mat dst, vector<Rect>& r) //문자인식 기능 함수
+    {
+        for (int i = 1; i < r.size(); i++) //객체 인식
+        {
+            if (r[i].width < 100 && r[i].height < 100) { //객체 높이와 넓이가 100이하이면 소수점 처리
+                message += "."; // 예측결과 넣기
+                cout << "예측 결과 : 소수점 ." << endl;
+            }
+            else { //소수점이 아니면 문자 인식 수행
+                Mat img =dst(r[i]); //레이블링된 객체 이미지 추출
+
+                vector<String> classNames = { "0","1","2","3","4","5","6","7","8","9","/","+","-","x","(","A","N","S" }; //클래스 이름 
+                // Load network
+                Net net = readNet("frozen_model.pb"); //모델 파일 불러오기
+                if (net.empty()) { cerr << "Network load failed!" << endl; } //에러처리
+                // Load an image
+                if (img.empty()) { //에러처리
+                    cerr << "Image load failed!" << endl;
+                }
+                // Inference
+                Mat predict; //예측 이미지
+                cvtColor(img, predict, COLOR_GRAY2RGB); //채널변경
+
+                Mat inputBlob = blobFromImage(predict, 1 / 127.5, Size(224, 224), -1, 0); //블롭 객체 생성
+                net.setInput(inputBlob);//네트워크 입력으로 설정
+                Mat prob = net.forward(); //네트워크를 실행
+                // Check results & Display
+
+                double maxVal; // 최대값 저장할 변수
+                Point maxLoc; //최대값 위치 저장할 변수
+                minMaxLoc(prob, NULL, &maxVal, NULL, &maxLoc);
+                if (classNames[maxLoc.x] == "A" || classNames[maxLoc.x] == "N" || classNames[maxLoc.x] == "S") { //문자처리
+                    if (classNames[maxLoc.x] == "S") { //s가 인식되면 
+                        message += to_string(ans); //ans값 대입
+                    }
+                }
+                else if (classNames[maxLoc.x] == "(") { //괄호 처리
+                    if (cnt == 0) { // 여는 괄호
+                        message += classNames[maxLoc.x]; // ( 넣기!!!!!!!!!
+                        cnt = 1;
+                    }
+                    else if (cnt == 1) {//닫는 괄호이면
+                        message += ")"; // ( 넣기!!!!!!!!!
+                        cnt = 0;
+                    }
+                }
+                else {
+                    message += classNames[maxLoc.x]; // 예측결과 넣기!!!!!!!!!
+                }
+                String str = classNames[maxLoc.x] + format("(%4.2lf%%)", maxVal *
+                    100);
+                cout << "예측 결과" << str << endl;//예측 결과 출력
+                
+                img = Scalar(0, 0, 0); //창 지우기
+
+            }
+
+        }
+
+    }
+ -----------------------------
+ ### 
+ 
