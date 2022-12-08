@@ -348,12 +348,12 @@ youtube : https://www.youtube.com/watch?v=JaJqFwNpuyE﻿
  ## :bulb:AC기능
  -입력기능 창에 Scalar(0)을 대입해 사용자의 전체 입력 삭제
 - ![image](https://user-images.githubusercontent.com/105347300/205662175-f639c0ed-79e3-4d7d-9ae4-7c30435870ef.png)
-- else if (x >= 1300 && y <= 100) { // ac버튼 구간 설정
-       img = Scalar(0); // 필기체 입력칸 지우기
-       draw(img); // 필기체 구성 그리기 함수 호출
+-             else if (x >= 1300 && y <= 100) { // ac버튼 구간 설정
+                img = Scalar(0); // 필기체 입력칸 지우기
+                draw(img); // 필기체 구성 그리기 함수 호출
 
-       level = 2;
-   }
+                level = 2;
+            }
 
                                             
 --------------------------
