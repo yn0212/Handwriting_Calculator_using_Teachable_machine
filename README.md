@@ -11,7 +11,11 @@ Teachable machine을 이용해 사용자가 필기체로 입력한 수식을 인
 
 완내스 동작 영상
 
-https://github.com/yn0212/Handwriting_Calculator_using_Teachable_machine/assets/105347300/a117a276-8fd6-4f07-9748-fdc93c230bf4
+
+
+https://github.com/yn0212/Handwriting_Calculator_using_Teachable_machine/assets/105347300/8e3fc422-398c-447f-a872-540bfbc3f1cc
+
+
 ---------------------------------------------------------
 # :pushpin:Project function
 
