@@ -6,17 +6,12 @@
 # :pushpin:Project Description
 
 Teachable machine을 이용해 사용자가 필기체로 입력한 수식을 인식하여 계산해주는 계산기 프로그램이다.
-
-
-
 --------------------------------------------------------
 # :pushpin:Project video
 
 완내스 동작 영상
 
 https://github.com/yn0212/Handwriting_Calculator_using_Teachable_machine/assets/105347300/a117a276-8fd6-4f07-9748-fdc93c230bf4
-
-
 ---------------------------------------------------------
 # :pushpin:Project function
 
