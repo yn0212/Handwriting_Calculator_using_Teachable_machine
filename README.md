@@ -9,11 +9,7 @@ Teachable machine을 이용해 사용자가 필기체로 입력한 수식을 인
 --------------------------------------------------------
 # :pushpin:Project video
 
-완내스 동작 영상
-
-
-
-https://github.com/yn0212/Handwriting_Calculator_using_Teachable_machine/assets/105347300/8e3fc422-398c-447f-a872-540bfbc3f1cc
+youtube: 
 
 
 ---------------------------------------------------------
